@@ -1,0 +1,20 @@
+language: generic
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t juchilian/django-api-practice -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true juchilian/django-api-practice python3 manage.py test
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "ap-northeast-1"
+#   app: "django-api-practice"
+#   env: "Dockerreact-env"
+#   bucket_name: "elasticbeanstalk-ap-northeast-1-676807061826"
+#   bucket_path: "django-api-practice"
+#   on:
+#     branch: main
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
