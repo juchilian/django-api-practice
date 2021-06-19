@@ -6,8 +6,8 @@ before_install:
   - docker build -t juchilian/django-api-practice -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true juchilian/django-api-practice
-  - docker exec juchilian/django-api-practice python3 manage.py test
+  - docker run -e CI=true juchilian/django-api-practice --name test_container
+  - docker exec test_container python3 manage.py test
 # deploy:
 #   provider: elasticbeanstalk
 #   region: "ap-northeast-1"
