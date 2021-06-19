@@ -3,7 +3,7 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t juchilian/django-api-practice -f Dockerfile.dev .
+  - docker-compose build -t juchilian/django-api-practice -f docker-compose.yml
 
 script:
   - docker run -e CI=true juchilian/django-api-practice --name test_container
